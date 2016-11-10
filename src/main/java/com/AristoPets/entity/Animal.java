@@ -1,8 +1,10 @@
-package com.AristoPets.Hello.entity;
+package com.AristoPets.entity;
 
 import java.util.Date;
 
 public class Animal {
+    public enum Gender { MALE, FEMALE};
+
     private long id;
     private long breederID;
     private Date birthday;
@@ -10,7 +12,7 @@ public class Animal {
     private String photos;
     private String fullName;
     private String breed; //temporary type
-    private String sex;
+    private Gender gender;
     private String colourOfAnimal;
     private String additionalInformation;
 
@@ -70,13 +72,6 @@ public class Animal {
         this.breed = breed;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     public String getColourOfAnimal() {
         return colourOfAnimal;
@@ -92,6 +87,14 @@ public class Animal {
 
     public void setAdditionalInformation(String additionalInformation) {
         this.additionalInformation = additionalInformation;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
 

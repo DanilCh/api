@@ -1,4 +1,4 @@
-package com.AristoPets.Hello.entity;
+package com.AristoPets.entity;
 
 import java.util.Date;
 

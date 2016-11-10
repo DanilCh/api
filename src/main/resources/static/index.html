@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index page</title>
+	<style type="text/css">
+		body{
+			background: lavender;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		<span>
+			<a href="./animalP.html">
+				Click to animal page
+			</a>
+		</span>
+			Here is
+		<span>
+			<a href="./userP.html">
+				Click to user page
+			</a>
+		</span>
+			index page
+		<span>
+			<a href="./advertP.html">
+				Click to advert page
+			</a>
+		</span>
+
+	</h1>
+	<input type="button" name="" id="indexBut" value="GET-Request">
+	<input type="button" name="" id="indexBut_post" value="POST-Request">
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>	
+  <script type="text/javascript">
+  	$( document ).ready(function() {
+  		let usr = 'breeder';
+    	$('#indexBut').click(function() { 
+    		 event.preventDefault();
+			$.ajax('user/?usr=' + usr ,{
+				success: function(result){
+					console.log('success' + result);				
+				},
+				error: function(er){
+					console.log('error' + er);	
+				}			
+			});
+		});
+		$('#indexBut_post').click(function() { 
+			$.post("user/", { name: "Harley", breed : "French Bulldog", dateOfBirth : "27.12.2011"} );
+		});
+	});
+  </script>
+</body>
+</html>

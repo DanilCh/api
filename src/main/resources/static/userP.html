@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index page</title>
+	<style type="text/css">
+		body{
+			background: #f5f5f5;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		<span>
+			<a href="./index.html">
+				Click to index page 
+			</a>
+		</span>
+			Here is page  1
+		<span>
+			<a href="./advert.html">
+				Click to advert page
+			</a>
+		</span>
+	</h1>	
+	<input type="button" name="Gavrik" id="animal1" value="animal1">
+	<input type="button" name="Harley" id="animal2" value="animal2">
+	<input type="button" name="Leroy" id="animal3" value="animal3">
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>	
+  <script type="text/javascript">
+  	$( document ).ready(function() {
+  		$('#animal1, #animal2, #animal3').click(function() {
+    		 event.preventDefault();
+    		 let id = this.id;
+    		 let name = this.name;
+    		 
+			$.ajax('animal/?id='  + id + '&name=' + name, {
+				success: function(result){
+					console.log('success' + result);				
+				},
+				error: function(er){
+					console.log('error' + er);	
+				}			
+			});
+		});
+   		
+	});
+  </script>
+</body>
+</html>

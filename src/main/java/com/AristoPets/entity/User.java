@@ -1,9 +1,10 @@
-package com.AristoPets.Hello.entity;
+package com.AristoPets.entity;
 
 public class User {
+
     private long id;
-    private String outhType; // String type is temporary
-    private String outhId; // String type is temporary
+    private AuthType authType; // String type is temporary
+    private String authId; // String type is temporary
     private String email;
     private String firstName;
     private String lastName;
@@ -12,9 +13,14 @@ public class User {
     private String nursery;
     private String nurseryAddress;
     private String club;
-    private String agreement;
+    private String contractOfSale;
     private String animalsBreed; // String type is temporary
 
+    public User() {
+    }
+
+
+    /////////////// getters-setters
     public String getAnimalsBreed() {
         return animalsBreed;
     }
@@ -24,11 +30,11 @@ public class User {
     }
 
     public String getAgreement() {
-        return agreement;
+        return contractOfSale;
     }
 
     public void setAgreement(String agreement) {
-        this.agreement = agreement;
+        this.contractOfSale = agreement;
     }
 
     public String getClub() {
@@ -103,19 +109,29 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getOuthType() {
-        return outhType;
-    }
-
-    public void setOuthType(String outhType) {
-        this.outhType = outhType;
-    }
-
     public String getOuthId() {
-        return outhId;
+        return authId;
     }
 
-    public void setOuthId(String outhId) {
-        this.outhId = outhId;
+    public void setOuthId(String authId) { this.authId = authId; }
+    ///////////////////////////////
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", authType='" + authType + '\'' +
+                ", authId='" + authId + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", skypeAccount='" + skypeAccount + '\'' +
+                ", nursery='" + nursery + '\'' +
+                ", nurseryAddress='" + nurseryAddress + '\'' +
+                ", club='" + club + '\'' +
+                ", conractOfSale='" + contractOfSale + '\'' +
+                ", animalsBreed='" + animalsBreed + '\'' +
+                '}';
     }
 }
