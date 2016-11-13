@@ -12,17 +12,13 @@ public class AnimalController {
     @ResponseBody
     public Animal getAnimalData(@RequestParam(value = "id") String id,
                                 @RequestParam(value = "name") String name){
-
-
-        // here will be rendering of animal info and json serialization
-
-
+        //TODO: render of animal info and json serialization
         Animal animal = new Animal();
         animal.setFullName(name);
 
         return animal;
     }
-    //// "/api/breeds"
+
     @RequestMapping("/animal")
     public String getAnimalPage(){
         return "animalP.html";

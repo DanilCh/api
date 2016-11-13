@@ -19,8 +19,6 @@ public class User {
     public User() {
     }
 
-
-    /////////////// getters-setters
     public String getAnimalsBreed() {
         return animalsBreed;
     }
@@ -29,12 +27,12 @@ public class User {
         this.animalsBreed = animalsBreed;
     }
 
-    public String getAgreement() {
+    public String getContractOfSale() {
         return contractOfSale;
     }
 
-    public void setAgreement(String agreement) {
-        this.contractOfSale = agreement;
+    public void setContractOfSale(String contractOfSale) {
+        this.contractOfSale = contractOfSale;
     }
 
     public String getClub() {
@@ -109,12 +107,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getOuthId() {
+    public String getAuthId() {
         return authId;
     }
 
-    public void setOuthId(String authId) { this.authId = authId; }
-    ///////////////////////////////
+    public void setAuthId(String authId) { this.authId = authId; }
 
     @Override
     public String toString() {

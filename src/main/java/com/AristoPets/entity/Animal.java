@@ -7,6 +7,7 @@ public class Animal {
 
     private long id;
     private long breederID;
+    //@Temporal(value=TemporalType.DATE)
     private Date birthday;
     private Boolean readyForMating;
     private String photos;
@@ -15,6 +16,7 @@ public class Animal {
     private Gender gender;
     private String colourOfAnimal;
     private String additionalInformation;
+
 
     public long getId() {
         return id;

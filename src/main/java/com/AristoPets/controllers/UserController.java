@@ -1,6 +1,5 @@
 package com.AristoPets.controllers;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,7 @@ public class UserController {
 
         return "userP.html";
     }
-
+    
     @RequestMapping(value = "/user/", method = RequestMethod.GET)
     @ResponseBody
     public boolean isUserBreeder(@RequestParam("usr") String user){
@@ -22,16 +21,9 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+    @RequestMapping(name = "/user/", method = RequestMethod.POST)
     @ResponseBody
     public void takeUserData(@RequestBody() String userInfo)  {
-
-
-
-        //  ObjectMapper mapper = new ObjectMapper();
-        // here will be great json serialization
-        // System.out.println(userInfo);
-
-
+        //TODO: IMPLEMENT
     }
 }
