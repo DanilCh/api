@@ -1,78 +1,73 @@
 package com.AristoPets.entity;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = "user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private long id;
-    private AuthType authType; // String type is temporary
-    private String authId; // String type is temporary
-    private String email;
+
+    @Column(name = "USER_TYPE")
+    private boolean userType;
+
+    @Column(name = "FIRST_NAME")
     private String firstName;
+
+    @Column(name = "LAST_NAME")
     private String lastName;
-    private String phoneNumber;
-    private String skypeAccount;
+
+    @Column(name = "NURSERY")
     private String nursery;
-    private String nurseryAddress;
+
+    @Column(name = "AUTH_TYPE")
+    private boolean authType;
+
+    @Column(name = "AUTH_ID")
+    private String authId;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
+    @Column(name = "CLUB")
     private String club;
-    private String contractOfSale;
-    private String animalsBreed; // String type is temporary
+
+    @Column(name = "SOCIALS")
+    private String socials;
+
+    @Column(name = "PHOTO")
+    private String photo;
+
+    @Column(name = "CONTRACT_OF_SALE")
+    private boolean contractOfSale;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<Animal> animals;
 
     public User() {
     }
 
-    public String getAnimalsBreed() {
-        return animalsBreed;
-    }
-
-    public void setAnimalsBreed(String animalsBreed) {
-        this.animalsBreed = animalsBreed;
-    }
-
-    public String getContractOfSale() {
-        return contractOfSale;
-    }
-
-    public void setContractOfSale(String contractOfSale) {
-        this.contractOfSale = contractOfSale;
-    }
-
-    public String getClub() {
-        return club;
-    }
-
-    public void setClub(String club) {
-        this.club = club;
-    }
-
-    public String getNurseryAddress() {
-        return nurseryAddress;
-    }
-
-    public void setNurseryAddress(String nurseryAddress) {
-        this.nurseryAddress = nurseryAddress;
-    }
-
-    public String getNursery() {
-        return nursery;
-    }
-
-    public void setNursery(String nursery) {
+    public User(boolean userType, String firstName, String lastName, String nursery, boolean authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale, Set<Animal> animals) {
+        this.userType = userType;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.nursery = nursery;
-    }
-
-    public String getSkypeAccount() {
-        return skypeAccount;
-    }
-
-    public void setSkypeAccount(String skypeAccount) {
-        this.skypeAccount = skypeAccount;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
+        this.authType = authType;
+        this.authId = authId;
+        this.email = email;
         this.phoneNumber = phoneNumber;
+        this.club = club;
+        this.socials = socials;
+        this.photo = photo;
+        this.contractOfSale = contractOfSale;
+        this.animals = animals;
     }
 
     public long getId() {
@@ -83,12 +78,12 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isUserType() {
+        return userType;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserType(boolean userType) {
+        this.userType = userType;
     }
 
     public String getFirstName() {
@@ -107,28 +102,85 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getNursery() {
+        return nursery;
+    }
+
+    public void setNursery(String nursery) {
+        this.nursery = nursery;
+    }
+
+    public boolean isAuthType() {
+        return authType;
+    }
+
+    public void setAuthType(boolean authType) {
+        this.authType = authType;
+    }
+
     public String getAuthId() {
         return authId;
     }
 
-    public void setAuthId(String authId) { this.authId = authId; }
+    public void setAuthId(String authId) {
+        this.authId = authId;
+    }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", authType='" + authType + '\'' +
-                ", authId='" + authId + '\'' +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", skypeAccount='" + skypeAccount + '\'' +
-                ", nursery='" + nursery + '\'' +
-                ", nurseryAddress='" + nurseryAddress + '\'' +
-                ", club='" + club + '\'' +
-                ", conractOfSale='" + contractOfSale + '\'' +
-                ", animalsBreed='" + animalsBreed + '\'' +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getClub() {
+        return club;
+    }
+
+    public void setClub(String club) {
+        this.club = club;
+    }
+
+    public String getSocials() {
+        return socials;
+    }
+
+    public void setSocials(String socials) {
+        this.socials = socials;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public boolean isContractOfSale() {
+        return contractOfSale;
+    }
+
+    public void setContractOfSale(boolean contractOfSale) {
+        this.contractOfSale = contractOfSale;
+    }
+
+
+    public Set<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Set<Animal> animals) {
+        this.animals = animals;
     }
 }
+

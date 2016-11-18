@@ -16,16 +16,16 @@ public class BreedServiceImpl implements BreedService {
     private BreedDao breedDao;
 
     @Autowired
-    protected BreedServiceImpl(BreedDao breedDao){
+    protected BreedServiceImpl(BreedDao breedDao) {
         this.breedDao = breedDao;
     }
 
     @Override
     public Breed find(long id) {
         Breed foundBreed;
-        if(id>=0){
+        if (id >= 0) {
             foundBreed = breedDao.find(id);
-        } else{
+        } else {
             return null;
         }
 

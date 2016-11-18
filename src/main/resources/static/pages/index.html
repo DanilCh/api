@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Template</title>	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
+	<link rel="stylesheet" href="/assets/font-awesome.min.css"
+    th:href="@{/assets/assets/font-awesome.min.css}"/>
+	<link rel="stylesheet" type="text/css" href="assets/style.css"
+		  th:href="@{/templates/assets/style.css}"/>
+	<link rel="stylesheet" type="text/css" href="assets/index_content.css"
+		  th:href="@{/assets/index_content.css}"/>
+</head>
+<body>
+	<div class="wrapper">
+		<!-- header -->
+		<header>
+			<div class="header_logo"><a href="#" class="header_logo-a">AristoPets</a></div>
+			<div class="header_nav">
+				<ul class="header_nav_list">
+				    <li class="header_nav_item"><a href="#">Обьявления</a></li>
+				    <li class="header_nav_item"><a href="#">Заводчики</a></li>				    
+				</ul>
+			</div>
+			<div class="header_search">
+
+				<i class="icon-magnifier"></i>
+			</div>
+			<div class="header_user">
+				<img src="img/breeder.jpg" alt="breeder" class="header_user_img"/>
+				<div class="class_triangle-down"></div>
+				<div class="openMenu">
+					<p class="openMenu_">Your Page:</p>
+					<h3 class="openMenu_name">Dmitry Strahow</h3>
+					<h3 class="openMenu_manege">Manage Page</h3>
+					<h3 class="openMenu_add">Add menu</h3>
+					<p class="openMenu_lang">Language Eng <span>▼</span></p>
+				</div>
+			</div>
+		</header>
+
+		<!-- Main section -->
+		<section class="main">
+			<div class="sideBar">
+				<div class="sidebar_breeder">
+					<img class="sidebar_breeder_img" src="img/breeder.jpg" alt="breeder_photo"></img>
+					<h2 class="sidebar_breeder_name">Dmitry Strahov</h2>
+					<div class="sidebar_icons">
+						<a href="#"><i class="fa fa-facebook  fa-inverse" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-skype  fa-inverse" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></a>
+					</div>
+				</div>
+				<div class="sidebar_club">
+					<a href="#"><i class="icoLine icon-mustache"></i><span class="sidebar_club_text">Pitomnik name</span></a>
+					<a href="#"><i class="icoLine icon-briefcase" ></i><span class="sidebar_club_text">Club name</span></a>
+				</div>
+				<div class="sidebar_info">
+					<a href="#"><i class="icoLine icon-envelope"></i><span class="sidebar_info_text">name@adress.com</span></a>
+					<a href="#"><i class="icoLine icon-phone" ></i><span class="sidebar_info_text">+380931234567</span></a>
+					<a href="#"><i class="icoLine icon-location-pin"></i><span class="sidebar_info_text">Odessa, Ukraine</span></a>
+					<a  href="#"><i class="icoLine icon-doc" ></i><span class="sidebar_info_text">Dogovor</span><br /><span class="sidebar_info_text-mod">скачать</span></a>
+				</div>
+				<div class="sidebar_dogBreeds">
+					<h2 class="sidebar_dogBreeds_h">Dogs Breeds Dmitry</h2>
+					<ul class="sidebar_dogBreeds_list">
+						<li class="sidebar_dogBreeds_item">Yorkshire Terrier</li>
+						<li class="sidebar_dogBreeds_item">French Bulidog</li>
+						<li class="sidebar_dogBreeds_item"> Caucasian Shepherd Dog</li>
+					</ul>
+					
+				</div>
+			</div>
+			<div class="content">
+				<h1 class="content_head">Animals of <span>Dmitry</span>  (3)</h1>	
+				<section class="animals">
+					<div class="animals_picWrap">
+						<img src="img/dog1.jpg" alt="dogs" class="animals-pic"/>
+					</div>
+					<div class="animals_discription">
+						<h1 class="animal_breed animal_breed-style1">Yorkshire Terrier</h1>
+						<h2 class="animal_breed">Name</h2>
+						<h2 class="animal_breed animal_breed-style1">Sex: Boy | <span class="animal_breed"> he can work</span></h2>
+						<h2 class="animal_breed animal_breed-style2">Color name</h2>
+						<h2 class="animal_breed animal_breed-style2">Club name</h2>
+						<h2 class="animal_breed animal_breed-style2">2 years old</h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Rodoslovnaya</a></h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Children (3)</a></h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Rewards (12)</a></h2>
+						<p class="animal_breed animal_breed-discription">The Yorkshire Terrier is a small dog breed of terrier type, developed during the 19th century in Yorkshire, England, to catch rats in clothing mills.</p>
+						<h3 class="animal_breed animal_breed-more"><a href="#">More<span> ▶</span></a></h3>
+					</div>
+				</section>
+				<section class="animals">
+					<div class="animals_picWrap">
+						<img src="img/dog2.jpg" alt="dogs" class="animals-pic"/>
+					</div>
+					<div class="animals_discription">
+						<h1 class="animal_breed animal_breed-style1">French Buldog</h1>
+						<h2 class="animal_breed animal_breed-style3">Name</h2>
+						<h2 class="animal_breed animal_breed-style1">Sex: Boy | <span class="animal_breed"> he can work</span></h2>
+						<h2 class="animal_breed animal_breed-style2">Color name</h2>
+						<h2 class="animal_breed animal_breed-style2">Club name</h2>
+						<h2 class="animal_breed animal_breed-style2">2 years old</h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Rodoslovnaya</a></h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Children (3)</a></h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Rewards (12)</a></h2>
+						<p class="animal_breed animal_breed-discription">The Yorkshire Terrier is a small dog breed of terrier type, developed during the 19th century in Yorkshire, England, to catch rats in clothing mills.</p>
+						<h3 class="animal_breed animal_breed-more"><a href="#">More<span> ▶</span></a></h3>
+					</div>
+				</section>
+
+			</div>
+			
+		</section>
+		
+	</div>
+	
+	
+	<script type="text/javascript" src="js/script.js"
+			th:src="@{/js/script.js}"></script>
+</body>
+</html>

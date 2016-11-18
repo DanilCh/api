@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Breed")
+@Table(name = "breeds")
 public class Breed implements Serializable {
 
     @Id
@@ -16,24 +16,14 @@ public class Breed implements Serializable {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "ANIMAL_TYPE_ID")
+    @JoinColumn(name = "ANIMALTYPE_ID", nullable = false)
     private AnimalType animalType;
-
 
     public Breed() {
     }
 
-    public Breed(long id, String name, AnimalType animalType) {
-        this.id = id;
+    public Breed(String name, AnimalType animalType) {
         this.name = name;
-        this.animalType = animalType;
-    }
-
-    public AnimalType getAnimalType() {
-        return animalType;
-    }
-
-    public void setAnimalType(AnimalType animalType) {
         this.animalType = animalType;
     }
 
@@ -53,6 +43,13 @@ public class Breed implements Serializable {
         this.name = name;
     }
 
+    public AnimalType getAnimalType() {
+        return animalType;
+    }
+
+    public void setAnimalType(AnimalType animalType) {
+        this.animalType = animalType;
+    }
 
     @Override
     public String toString() {

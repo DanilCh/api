@@ -1,37 +1,100 @@
 package com.AristoPets.entity;
 
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Date;
 
+@Entity
+@Table(name = "animal")
 public class Animal {
-    public enum Gender { MALE, FEMALE};
 
-    private long id;
-    private long breederID;
-    //@Temporal(value=TemporalType.DATE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private int id;
+
+    @Column(name = "REGISTERED_NAME")
+    private String registeredName;
+
+    @Column(name = "GENDER")
+    private boolean gender;
+
+    @Column(name = "COLOR")
+    private String color;
+
+    @Column(name = "BIRTHDAY")
     private Date birthday;
-    private Boolean readyForMating;
-    private String photos;
-    private String fullName;
-    private String breed; //temporary type
-    private Gender gender;
-    private String colourOfAnimal;
-    private String additionalInformation;
+
+    @Column(name = "CLUB")
+    private String club;
+
+    @Column(name = "ADVERT_ID")
+    private int advertID;
+
+    @Column(name = "MORE_INFO")
+    private String moreInfo;
 
 
-    public long getId() {
+    @Column(name = "PHOTO")
+    private String photo;
+
+    @Column(name = "READY_TO_COPULATION")
+    private boolean readyToCopulation;
+
+    @ManyToOne
+    @JoinColumn(name = "BREEDS_ID", nullable = false)
+    private Breed breed;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user;
+
+    public Animal() {
+    }
+
+    public Animal(String registeredName, boolean gender, String color, Date birthday, String club, int advertID, String moreInfo, String photo, boolean readyToCopulation, Breed breed, User user) {
+        this.registeredName = registeredName;
+        this.gender = gender;
+        this.color = color;
+        this.birthday = birthday;
+        this.club = club;
+        this.advertID = advertID;
+        this.moreInfo = moreInfo;
+        this.photo = photo;
+        this.readyToCopulation = readyToCopulation;
+        this.breed = breed;
+        this.user = user;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getBreederID() {
-        return breederID;
+    public String getRegisteredName() {
+        return registeredName;
     }
 
-    public void setBreederID(long breederID) {
-        this.breederID = breederID;
+    public void setRegisteredName(String registeredName) {
+        this.registeredName = registeredName;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public Date getBirthday() {
@@ -42,62 +105,77 @@ public class Animal {
         this.birthday = birthday;
     }
 
-    public Boolean getReadyForMating() {
-        return readyForMating;
+    public String getClub() {
+        return club;
     }
 
-    public void setReadyForMating(Boolean readyForMating) {
-        this.readyForMating = readyForMating;
+    public void setClub(String club) {
+        this.club = club;
     }
 
-    public String getPhotos() {
-        return photos;
+    public int getAdvertID() {
+        return advertID;
     }
 
-    public void setPhotos(String photos) {
-        this.photos = photos;
+    public void setAdvertID(int advertID) {
+        this.advertID = advertID;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getMoreInfo() {
+        return moreInfo;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setMoreInfo(String moreInfo) {
+        this.moreInfo = moreInfo;
     }
 
-    public String getBreed() {
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public boolean isReadyToCopulation() {
+        return readyToCopulation;
+    }
+
+    public void setReadyToCopulation(boolean readyToCopulation) {
+        this.readyToCopulation = readyToCopulation;
+    }
+
+    public Breed getBreed() {
         return breed;
     }
 
-    public void setBreed(String breed) {
+    public void setBreed(Breed breed) {
         this.breed = breed;
     }
 
-
-    public String getColourOfAnimal() {
-        return colourOfAnimal;
+    public User getUser() {
+        return user;
     }
 
-    public void setColourOfAnimal(String colourOfAnimal) {
-        this.colourOfAnimal = colourOfAnimal;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getAdditionalInformation() {
-        return additionalInformation;
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", registeredName='" + registeredName + '\'' +
+                ", gender=" + gender +
+                ", color='" + color + '\'' +
+                ", birthday=" + birthday +
+                ", club='" + club + '\'' +
+                ", advertID=" + advertID +
+                ", moreInfo='" + moreInfo + '\'' +
+                ", photo='" + photo + '\'' +
+                ", readyToCopulation=" + readyToCopulation +
+                ", breed=" + breed +
+                ", user=" + user +
+                '}';
     }
-
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-
 }
