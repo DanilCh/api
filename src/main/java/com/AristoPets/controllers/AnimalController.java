@@ -1,54 +1,42 @@
 package com.AristoPets.controllers;
 
 import com.AristoPets.entity.Animal;
-import com.AristoPets.entity.AnimalType;
+import com.AristoPets.entity.User;
 import com.AristoPets.services.AnimalService;
-import com.AristoPets.services.AnimalTypeService;
+import com.AristoPets.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AnimalController {
 
     @Autowired
-    AnimalService animalService;
+    private AnimalService animalService;
 
-    @Autowired
-    AnimalTypeService animalTypeService;
 
-   /* @RequestMapping(value = "/animal/", method = RequestMethod.GET)
-    @ResponseBody
-    public Animal getAnimalData(@RequestParam(value = "id") String id,
-                                @RequestParam(value = "name") String name){
-        //TODO: render of animal info and json serialization
-        Animal animal = new Animal();
-        animal.setFullName(name);
+    @RequestMapping(value = "/animal", method = RequestMethod.GET)
+    public String getAnimalPage(@RequestParam("id")long id,Model model){
 
-        return animal;
-    }*/
+        Animal animal;
+        animal = animalService.getAnimal(id);
+        User user = animal.getUser();
+        model.addAttribute("name",user.getFirstName());
+        model.addAttribute("lname",user.getLastName());
+        model.addAttribute("nursery",user.getNursery());
+        model.addAttribute("club",user.getClub());
+        model.addAttribute("email",user.getEmail());
+        model.addAttribute("phone",user.getPhoneNumber());
+        model.addAttribute("animalName", animal.getName());//
+        model.addAttribute("breed", animal.getBreed().getName());
+        model.addAttribute("gender", animal.getGender().toString());
+        model.addAttribute("color", animal.getColor());
+        model.addAttribute("club", animal.getClub());
+        model.addAttribute("birthday", animal.getBirthday());
 
-    @RequestMapping(value = "/animals", method = RequestMethod.GET)
-    public String getAnimalPage(Model model) {
-        List<Animal> animals = animalService.getAnimals();
-        Animal animal = animals.get(0);
-        model.addAttribute("animal", animal);
-        return "index";
+        return "animal";
     }
 
-    @RequestMapping(value = "/animalstype", method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.OK)
-    public String getAnimalTypePage(@RequestParam("num") int animalNum, Model model) {
-        AnimalType animalType = animalTypeService.findOne(animalNum);
-        model.addAttribute("animal", animalType);
-        return "index";
-    }
 
 }

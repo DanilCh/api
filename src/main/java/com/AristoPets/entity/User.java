@@ -1,5 +1,9 @@
 package com.AristoPets.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -48,7 +52,9 @@ public class User {
     @Column(name = "CONTRACT_OF_SALE")
     private boolean contractOfSale;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @JsonBackReference
     private Set<Animal> animals;
 
     public User() {
@@ -63,6 +69,10 @@ public class User {
         this.authId = authId;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.club = club;
+        this.socials = socials;
+        this.photo = photo;
+        this.contractOfSale = contractOfSale;
         this.club = club;
         this.socials = socials;
         this.photo = photo;
@@ -174,7 +184,6 @@ public class User {
         this.contractOfSale = contractOfSale;
     }
 
-
     public Set<Animal> getAnimals() {
         return animals;
     }
@@ -183,4 +192,3 @@ public class User {
         this.animals = animals;
     }
 }
-

@@ -1,16 +1,14 @@
 package com.AristoPets.services;
 
-import com.AristoPets.entity.Breed;
+import com.AristoPets.entity.Breeds;
 
 import java.util.List;
 
 
+
 public interface BreedService {
-    Breed find(long id);
-
-    List<Breed> findAll();
-
-    void update(Breed breed);
-
-    void updateAll(List<Breed> breedList);
+    Breeds find(long id);
+    List<Breeds> findAll();
+    void update(Breeds breeds);
+    void updateAll(List<Breeds> breedsList);
 }

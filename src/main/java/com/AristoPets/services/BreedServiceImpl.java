@@ -1,7 +1,7 @@
 package com.AristoPets.services;
 
-import com.AristoPets.dao.BreedDao;
-import com.AristoPets.entity.Breed;
+import com.AristoPets.dao.BreedsRepository;
+import com.AristoPets.entity.Breeds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,39 +13,34 @@ import java.util.List;
 @Service("BreedService")
 public class BreedServiceImpl implements BreedService {
 
-    private BreedDao breedDao;
-
     @Autowired
-    protected BreedServiceImpl(BreedDao breedDao) {
-        this.breedDao = breedDao;
-    }
+    private BreedsRepository breedsRepository;
 
     @Override
-    public Breed find(long id) {
-        Breed foundBreed;
-        if (id >= 0) {
-            foundBreed = breedDao.find(id);
-        } else {
+    public Breeds find(long id) {
+        Breeds foundBreeds;
+        if(id>=0){
+            foundBreeds = breedsRepository.findOne(id);
+        } else{
             return null;
         }
 
-        return foundBreed;
+        return foundBreeds;
     }
 
     @Transactional(readOnly = true)
     @Override
-    public List<Breed> findAll() {
-        return breedDao.findAll();
+    public List<Breeds> findAll() {
+        return breedsRepository.findAll();
     }
 
     @Override
-    public void update(Breed breed) {
-        breedDao.update(breed);
+    public void update(Breeds breeds) {
+        breedsRepository.save(breeds);
     }
 
     @Override
-    public void updateAll(List<Breed> breedList) {
-        breedDao.updateAll(breedList);
-
+    public void updateAll(List<Breeds> breedsList) {
+        breedsRepository.save(breedsList);
     }
-}
+    }

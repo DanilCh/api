@@ -6,5 +6,9 @@ import java.util.List;
 
 
 public interface AnimalService {
-    List<Animal> getAnimals();
+    void saveOrUpdate(Animal animal);
+    void saveOrUpdateAll(List<Animal> animals);
+    List<Animal> getAnimalsByUserID(long id);
+    Animal getAnimal(long id);
+
 }
