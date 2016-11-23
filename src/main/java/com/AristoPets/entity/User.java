@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USERS")
 public class User {
 
     @Id
@@ -52,10 +52,14 @@ public class User {
     @Column(name = "CONTRACT_OF_SALE")
     private boolean contractOfSale;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     @JsonBackReference
     private Set<Animal> animals;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @JsonBackReference
+    private Set<Advert> adverts;
+
 
     public User() {
     }
@@ -190,5 +194,13 @@ public class User {
 
     public void setAnimals(Set<Animal> animals) {
         this.animals = animals;
+    }
+
+    public Set<Advert> getAdverts() {
+        return adverts;
+    }
+
+    public void setAdverts(Set<Advert> adverts) {
+        this.adverts = adverts;
     }
 }

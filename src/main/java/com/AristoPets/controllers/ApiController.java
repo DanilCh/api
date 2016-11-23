@@ -1,7 +1,9 @@
 package com.AristoPets.controllers;
 
+import com.AristoPets.entity.Advert;
 import com.AristoPets.entity.Animal;
 import com.AristoPets.entity.Breeds;
+import com.AristoPets.services.AdvertService;
 import com.AristoPets.services.AnimalService;
 import com.AristoPets.services.BreedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class ApiController {
     @Autowired
     private BreedService  breedService;
 
+    @Autowired
+    private AdvertService advertService;
 
     @RequestMapping("/api/breeds")
     public List<Breeds> getAllBreeds(){
@@ -35,5 +39,12 @@ public class ApiController {
 
         Animal animal = animalService.getAnimal(id);
         return animal   ;
+    }
+
+    @RequestMapping("/api/adverts/all")
+    public List<Advert> getAllAdverts(){
+
+        return advertService.findAll();
+
     }
 }

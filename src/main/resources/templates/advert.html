@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Animal Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
+	<link rel="stylesheet" href="../assets/font-awesome.min.css"
+		  th:href="@{/assets/font-awesome.min.css}"/>
+	<link rel="stylesheet" type="text/css" href="../assets/style.css"
+		  th:href="@{/assets/style.css}"/>
+	<link rel="stylesheet" type="text/css" href="../assets/page3.css"
+		  th:href="@{/assets/page3.css}"/>
+</head>
+<body>
+<header>
+	<div class="header_wrapper">
+		<div class="header_logo"><a href="#" class="header_logo-a">AristoPets</a></div>
+		<div class="header_nav">
+			<ul class="header_nav_list">
+				<li class="header_nav_item"><a href="#">Обьявления</a></li>
+				<li class="header_nav_item"><a href="#">Заводчики</a></li>
+			</ul>
+		</div>
+		<div class="header_search">
+
+			<i class="icon-magnifier"></i>
+		</div>
+		<div class="header_user">
+			<img src="../img/breeder.jpg" th:src="@{/img/breeder.jpg}" alt="breeder" class="header_user_img" />
+			<div class="class_triangle-down"></div>
+			<div class="openMenu">
+				<p class="openMenu_">Your Page:</p>
+				<h3 class="openMenu_name" th:text="${name}+' '+${lname}">Dmitry Strahow</h3>
+				<h3 class="openMenu_manege">Manage Page</h3>
+				<h3 class="openMenu_add">Add menu</h3>
+				<p class="openMenu_lang">Language Eng <span>▼</span></p>
+			</div>
+		</div>
+	</div>
+</header>
+<div class="wrapper">
+	<!-- Main section -->
+	<section class="main">
+		<div class="sideBar">
+			<div class="sidebar_breeder">
+				<img class="sidebar_breeder_img" src="../img/breeder.jpg" th:src="@{/img/breeder.jpg}" alt="breeder_photo"/>
+				<h2 class="sidebar_breeder_name" th:text="${name}+' '+${lname}">Dmitry Strahov</h2>
+				<div class="sidebar_icons">
+					<a href="#"><i class="fa fa-facebook  fa-inverse" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-skype  fa-inverse" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></a>
+				</div>
+			</div>
+			<div class="sidebar_club">
+				<a href="#"><i class="icoLine icon-mustache"></i><span class="sidebar_club_text" th:text="${nursery}">Pitomnik name</span></a>
+				<a href="#"><i class="icoLine icon-briefcase"></i><span class="sidebar_club_text" th:text="${club}">Club name</span></a>
+			</div>
+			<div class="sidebar_info">
+				<a href="#"><i class="icoLine icon-envelope"></i><span class="sidebar_info_text" th:text="${email}">name@adress.com</span></a>
+				<a href="#"><i class="icoLine icon-phone" ></i><span class="sidebar_info_text" th:text="${phone}">+380931234567</span></a>
+				<a href="#"><i class="icoLine icon-location-pin"></i><span class="sidebar_info_text">Odessa, Ukraine</span></a>
+				<a  href="#"><i class="icoLine icon-doc" ></i><span class="sidebar_info_text">Contract of sale</span><br /><span class="sidebar_info_text-mod" th:text="'Download'" th:if="${contract}">Dogovor</span></a>
+			</div>
+			<div class="sidebar_dogBreeds" th:if="${breeds != null}">
+				<h2 class="sidebar_dogBreeds_h" th:text="${'Breeds of '+name}">Dogs Breeds Dmitry</h2>
+				<ul class="sidebar_dogBreeds_list">
+					<li class="sidebar_dogBreeds_item" th:each ="breed : ${breeds}" th:text="${breed.name}">Yorkshire Terrier</li>
+				</ul>
+
+			</div>
+		</div>
+				<div class="content">
+					<h1 class="content_head_child ">
+						Name (Yorkshite Terrier) 
+						<span class="content_head_numberOfChild"> | Child #1</span>
+					</h1>	
+					<section class="animals">
+						<div class="animals_picWrap">
+							<img src="../img/dog1.jpg" alt="dogs" class="animals-pic"/>
+						</div>
+						<div class="animals_discription">
+							<div class="animals_discription_left">
+								<h2 class="animal_breed animal_breed-style1">Yorkshire Terrier </h2>		
+								<h2 class="animal_breed animal_breed-style1">Place of Birth: </h2>	
+								<h2 class="animal_breed animal_breed-style1">Date of Birth: </h2>	
+								<h2 class="animal_breed animal_breed-style1">Parents: </h2>	
+								<h2 class="animal_breed animal_breed-style1 animal_breed-sex">Sex: </h2>	
+								<h2 class="animal_breed animal_breed-style1">Club: </h2>	
+								<h2 class="animal_breed animal_breed-style1">Color: </h2>	
+								<h2 class="animal_breed animal_breed-style1">Privivki: </h2>						
+							</div>
+							<div class="animals_discription_right">						
+								<h2 class="animal_breed animal_breed-style3 animal_breed-place">Odessa, Ukraine</h2>	
+								<h2 class="animal_breed animal_breed-style3">12.06.13</h2>		
+								<h2 class="animal_breed animal_breed-style2">
+									<a href="#">Name</a> (Yorkshire Terrier)
+									<a href="#">Name</a> (Yorkshire Terrier)
+								</h2>	
+								<h2 class="animal_breed animal_breed-style3">Boy</h2>
+								<h2 class="animal_breed animal_breed-style3">Club name</h2>
+								<h2 class="animal_breed animal_breed-style3">Color name</h2>
+								<h2 class="animal_breed animal_breed-style3">Yes</h2>
+								<h2 class="animal_breed animal_breed-style3"><a href="#">Rodoslovnaya</a></h2>
+							</div>	
+						</div>						
+						<div class="animal_child_discription">
+							<div class="animal_child_infoLine animal_breed animal_breed-style3">
+								<p> Chenyachaya Kartchka: <span>ds</span> </p>
+							</div>
+							<div class="animal_child_infoLine animal_breed animal_breed-style3">
+								<p class="animal_child_infoLine-mod"> <span class="animal_breed-style1">Status:</span> Ne Kuplen </p>
+							</div>
+							<div class="animal_child_discriptionMain">
+								<h2 class="animal_discription_headlines">Discription:</h2>
+								<p class="animal_discription_text">
+								The Yorkshire Terrier is a small dog breed of terrier type, developed during the 19th century in Yorkshire, England, to catch rats in clothing mills. A popular companion dog, the Yorkshire Terrier has also been part of the development of other breeds, such as the Australian Silky Terrier. It has a grey, black, and tan coat, and the breed's nickname is Yorkie.</p>
+							</div>	
+							<div class="animal_child_price">Price: 700$</div>	
+							<div class="animal_child_but"><a href="#">Забронировать</a></div>	
+							<p class="animal_child_lookMore">You can look at <a href="#">other Children of these parents.</a></p>	
+						</div>
+					</section>
+				</div>				
+			</section>			
+		</div>
+	
+	<script type="text/javascript" src="../js/script.js"></script>
+</body>
+</html>

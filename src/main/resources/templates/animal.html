@@ -3,150 +3,109 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width"/>
-	<title>Template</title>
-	<link rel="stylesheet"
-		  href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
+	<title>Animal Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
 	<link rel="stylesheet" href="../assets/font-awesome.min.css"
-		  th:href="@{/assets/font-awesome.min.css}"/>
+		th:href="@{/assets/font-awesome.min.css}"/>
 	<link rel="stylesheet" type="text/css" href="../assets/style.css"
-		  th:href="@{/assets/style.css}"/>
-	<link rel="stylesheet" type="text/css" href="../assets/index_content.css"
-		  th:href="@{/assets/index_content.css}"/>
+		th:href="@{/assets/style.css}"/>
+	<link rel="stylesheet" type="text/css" href="../assets/page2.css"
+		th:href="@{/assets/page2.css}"/>
 </head>
 <body>
-<div class="wrapper">
-	<!-- header -->
 	<header>
-		<div class="header_logo"><a href="#" class="header_logo-a">AristoPets</a></div>
-		<div class="header_nav">
-			<ul class="header_nav_list">
-				<li class="header_nav_item"><a href="#">Обьявления</a></li>
-				<li class="header_nav_item"><a href="#">Заводчики</a></li>
-			</ul>
-		</div>
-		<div class="header_search">
+		<div class="header_wrapper">
+			<div class="header_logo"><a href="#" class="header_logo-a">AristoPets</a></div>
+			<div class="header_nav">
+				<ul class="header_nav_list">
+				    <li class="header_nav_item"><a href="#">Обьявления</a></li>
+				    <li class="header_nav_item"><a href="#">Заводчики</a></li>				    
+				</ul>
+			</div>
+			<div class="header_search">
 
-			<i class="icon-magnifier"></i>
-		</div>
-		<div class="header_user">
-			<img src="../static/img/breeder.jpg" th:src="@{/img/breeder.jpg}" alt="breeder" class="header_user_img"/>
-			<div class="class_triangle-down"></div>
-			<div class="openMenu">
-				<p class="openMenu_">Your Page:</p>
-				<h3 class="openMenu_name" th:text="${name}+' '+${lname}">Dmitry Strahow</h3>
-				<h3 class="openMenu_manege">Manage Page</h3>
-				<h3 class="openMenu_add">Add menu</h3>
-				<p class="openMenu_lang">Language Eng <span>▼</span></p>
+				<i class="icon-magnifier"></i>
+			</div>
+			<div class="header_user">
+				<img src="../img/breeder.jpg" th:src="@{/img/breeder.jpg}" alt="breeder" class="header_user_img" />
+				<div class="class_triangle-down"></div>
+				<div class="openMenu">
+					<p class="openMenu_">Your Page:</p>
+					<h3 class="openMenu_name" th:text="${name}+' '+${lname}">Dmitry Strahow</h3>
+					<h3 class="openMenu_manege">Manage Page</h3>
+					<h3 class="openMenu_add">Add menu</h3>
+					<p class="openMenu_lang">Language Eng <span>▼</span></p>
+				</div>
 			</div>
 		</div>
 	</header>
-
-	<!-- Main section -->
-	<section class="main">
-		<div class="sideBar">
-			<div class="sidebar_breeder">
-				<img class="sidebar_breeder_img" src="../static/img/breeder.jpg" alt="breeder_photo"/>
-				<h2 class="sidebar_breeder_name" th:text="${name}+' '+${lname}">NAME + LASTNAME</h2>
-				<div class="sidebar_icons">
-					<a href="#"><i class="fa fa-facebook  fa-inverse" aria-hidden="true"></i></a>
-					<a href="#"><i class="fa fa-skype  fa-inverse" aria-hidden="true"></i></a>
-					<a href="#"><i class="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></a>
+	<div class="wrapper">
+		<!-- Main section -->
+		<section class="main">
+			<div class="sideBar">
+				<div class="sidebar_breeder">
+					<img class="sidebar_breeder_img" src="../img/breeder.jpg" th:src="@{/img/breeder.jpg}" alt="breeder_photo"/>
+					<h2 class="sidebar_breeder_name" th:text="${name}+' '+${lname}">Dmitry Strahov</h2>
+					<div class="sidebar_icons">
+						<a href="#"><i class="fa fa-facebook  fa-inverse" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-skype  fa-inverse" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></a>
+					</div>
+				</div>
+				<div class="sidebar_club">
+					<a href="#"><i class="icoLine icon-mustache"></i><span class="sidebar_club_text" th:text="${nursery}">Pitomnik name</span></a>
+					<a href="#"><i class="icoLine icon-briefcase"></i><span class="sidebar_club_text" th:text="${club}">Club name</span></a>
+				</div>
+				<div class="sidebar_info">
+					<a href="#"><i class="icoLine icon-envelope"></i><span class="sidebar_info_text" th:text="${email}">name@adress.com</span></a>
+					<a href="#"><i class="icoLine icon-phone" ></i><span class="sidebar_info_text" th:text="${phone}">+380931234567</span></a>
+					<a href="#"><i class="icoLine icon-location-pin"></i><span class="sidebar_info_text">Odessa, Ukraine</span></a>
+					<a  href="#"><i class="icoLine icon-doc" ></i><span class="sidebar_info_text">Contract of sale</span><br /><span class="sidebar_info_text-mod" th:text="'Download'" th:if="${contract}">Dogovor</span></a>
+				</div>
+				<div class="sidebar_dogBreeds" th:if="${breeds!=null}">
+					<h2 class="sidebar_dogBreeds_h" th:text="${'Breeds of '+name}">Dogs Breeds Dmitry</h2>
+					<ul class="sidebar_dogBreeds_list">
+						<li class="sidebar_dogBreeds_item" th:each ="breed:${breeds}" th:text="${breed.name}">Yorkshire Terrier</li>
+					</ul>
+					
 				</div>
 			</div>
-			<div class="sidebar_club">
-				<a href="#"><i class="icoLine icon-mustache"></i><span class="sidebar_club_text" th:text="${nursery}">Pitomnik name</span></a>
-				<a href="#"><i class="icoLine icon-briefcase"></i><span class="sidebar_club_text" th:text="${club}">Club name</span></a>
-			</div>
-			<div class="sidebar_info">
-				<a href="#"><i class="icoLine icon-envelope"></i><span class="sidebar_info_text" th:text="${email}">name@adress.com</span></a>
-				<a href="#"><i class="icoLine icon-phone"></i><span class="sidebar_info_text" th:text="${phone}">+380931234567</span></a>
-				<a href="#"><i class="icoLine icon-location-pin"></i><span
-						class="sidebar_info_text">Odessa, Ukraine</span></a>
-				<a href="#>"><i class="icoLine icon-doc"></i><span class="sidebar_info_text">Dogovor</span><br/><span
-						class="sidebar_info_text-mod">скачать</span></a>
-			</div>
-			<div class="sidebar_dogBreeds">
-				<h2 class="sidebar_dogBreeds_h" th:text="'Dogs Breeds '+${name}">Dogs Breeds Dmitry</h2>
-				<ul class="sidebar_dogBreeds_list">
-					<li class="sidebar_dogBreeds_item">Yorkshire Terrier</li>
-					<li class="sidebar_dogBreeds_item">French Bulidog</li>
-					<li class="sidebar_dogBreeds_item"> Caucasian Shepherd Dog</li>
-				</ul>
 
-			</div>
-		</div>
 			<div class="content">
-				<h1 class="content_head ">Name <span class="content_head_name" th:text="${animalName}">Hulio</span></h1>
+				<h1 class="content_head ">Name: <span class="content_head_name" th:text="${animal.name}">(Yorkshite Terrier)</span></h1>
 				<section class="animals">
 					<div class="animals_picWrap">
-						<img src="../img/dog1.jpg" alt="dogs" class="animals-pic"/>
+						<img src="../img/dog1.jpg" th:src="@{/img/dog1.jpg}" alt="dogs" class="animals-pic"/>
 					</div>
-					<div class="animals_discription">
-						<h2 class="animal_breed animal_breed-style1" th:text="${animalName}">Yorkshire Terrier</h2>
-						<h2 class="animal_breed">Name</h2>
-						<h2 class="animal_breed animal_breed-style1" th:text="${breed}">Sex: Boy | <span class="animal_breed"> he can work</span></h2>
-						<h2 class="animal_breed animal_breed-style2" th:text="${color}">Color name</h2>
-						<h2 class="animal_breed animal_breed-style2" th:text="${club}">Club name</h2>
-						<h2 class="animal_breed animal_breed-style2" th:text="${birthDay}">2 years old</h2>
-						<h2 class="animal_breed animal_breed-style3"><a href="#">Here will be odoslovnaya</a></h2>
+					<div class="animals_discription" th:object="${animal}">
+						<h2 class="animal_breed animal_breed-style1" th:text="'Breed:'+*{breed.name}">Yorkshire Terrier</h2>
+						<h2 class="animal_breed animal_breed-style1" th:text="'Gender:'+*{gender}">Sex: Boy | <span class="animal_breed" th:text="'Ready to copulation'" th:if="${ready}">work</span></h2>
+						<h2 class="animal_breed animal_breed-style2" th:text="'Color:'+*{color}">Color name</h2>
+						<h2 class="animal_breed animal_breed-style2" th:text="'Club:'+*{club}">Club name</h2>
+						<h2 class="animal_breed animal_breed-style2" th:text="'Birthday:'+*{birthday}">2 years old</h2>
+						<h2 class="animal_breed animal_breed-style3"><a href="#">Rodoslovnaya</a></h2>
 					</div>
 					<div class="animal_discription">
 						<h2 class="animal_discription_headlines">Description:</h2>
-						<p class="animal_discription_text" th:text="${description}">
-						The Yorkshire Terrier is a small dog breed of terrier type, developed during the 19th century in Yorkshire, England, to catch rats in clothing mills. A popular companion dog, the Yorkshire Terrier has also been part of the development of other breeds, such as the Australian Silky Terrier. It has a grey, black, and tan coat, and the breed's nickname is Yorkie.</p>
-						<h2 class="animal_rewards_headlines">Rewards <span>(12):</span></h2>
-						<ul class="animal_rewardList">
-							<li class="animal_rewardItem">
-								First Place in Edinsburgh PetWorld Competition in category «Small Dogs» 
-								<a href="#">(Download)</a>
-							</li>
-							<li class="animal_rewardItem">
-								First Place in Edinsburgh PetWorld Competition in category «Small Dogs» 
-								<a href="#">(Download)</a>
-							</li>
-							<li class="animal_rewardItem">
-								First Place in Edinsburgh PetWorld Competition in category «Small Dogs» 
-								<a href="#">(Download)</a>
-							</li>
-							<li class="animal_rewardItem">
-								First Place in Edinsburgh PetWorld Competition in category «Small Dogs» 
-								<a href="#">(Download)</a>
-							</li>
-							<li class="animal_rewardItem">
+						<p class="animal_discription_text" th:text="${animal.moreInfo}">Description</p>
+						<h2 class="animal_rewards_headlines">Rewards <span th:text="${'('+titles.size()+')'}">(12):</span></h2>
+						<ul class="animal_rewardList" th:if="${titles != null}">
+							<li class="animal_rewardItem" th:each="title : ${titles}" th:text="${title.description}">
 								First Place in Edinsburgh PetWorld Competition in category «Small Dogs» 
 								<a href="#">(Download)</a>
 							</li>
 						</ul>
-						<h3 class="animal_breed animal_breed-more"><a href="#">More<span> ▶</span></a></h3>
-						<h2 class="animal_children_headlines">Children <span>(3):</span></h2>
-						<div class="children_list">
-							<div class="children_item">
-								<img class="children_item_pic" src="../img/dog1.jpg" alt="dogImg"/>
-								<p class="children_item_color">Color: <span>Оливка</span></p>
-								<p class="children_item_db">DB: <span>12.06.12</span></p>
-								<p class="children_item_price">Цена: <span>700$</span></p>
-								<h3 class="children_item_more"><a href="#">More<span> ▶</span></a></h3>
+						<h2 class="animal_children_headlines">Children <span th:text="${'('+adverts.size()+')'}" th:if="${adverts!=null}">(3):</span></h2>
+						<div class="children_list" th:if="${adverts!=null}">
+							<div class="children_item" th:each="advert:${adverts}">
+								<img class="children_item_pic" src="../img/dog1.jpg" th:src="@{/img/dog1.jpg}" alt="dogImg"/>
+								<p class="children_item_db">DB: <span th:text="${advert.birthday}">12.06.12</span></p>
+								<h3 class="children_item_more"><a href="#" th:attr="href='/advert?id='+${advert.id}">More<span> ▶</span></a></h3>
 							</div>
-							<div class="children_item">
-								<img class="children_item_pic" src="../img/dog1.jpg" alt="dogImg" />
-								<p class="children_item_color">Color: <span>Серый</span></p>
-								<p class="children_item_db">DB: <span>07.12.15</span></p>
-								<p class="children_item_price">Цена: <span>900$</span></p>
-								<h3 class="children_item_more"><a href="#">More<span> ▶</span></a></h3>
-							</div>
-							<div class="children_item">
-								<img class="children_item_pic" src="../img/dog1.jpg" alt="dogImg"/>
-								<p class="children_item_color">Color: <span>Меринда</span></p>
-								<p class="children_item_db">DB: <span>22.05.16</span></p>
-								<p class="children_item_price">Цена: <span>1100$</span></p>
-								<h3 class="children_item_more"><a href="#">More<span> ▶</span></a></h3>
-							</div>	
 						</div>
 						
 					</div>
 				</section>
-				
-
 			</div>
 			
 		</section>
