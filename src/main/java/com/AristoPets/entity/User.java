@@ -2,14 +2,13 @@ package com.AristoPets.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +51,7 @@ public class User {
     @Column(name = "CONTRACT_OF_SALE")
     private boolean contractOfSale;
 
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     @JsonBackReference
     private Set<Animal> animals;
@@ -64,7 +64,7 @@ public class User {
     public User() {
     }
 
-    public User(boolean userType, String firstName, String lastName, String nursery, boolean authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale, Set<Animal> animals) {
+    public User(boolean userType, String firstName, String lastName, String nursery, boolean authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale,  Set<Animal> animals) {
         this.userType = userType;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -87,6 +87,8 @@ public class User {
     public long getId() {
         return id;
     }
+
+
 
     public void setId(long id) {
         this.id = id;
@@ -187,6 +189,7 @@ public class User {
     public void setContractOfSale(boolean contractOfSale) {
         this.contractOfSale = contractOfSale;
     }
+
 
     public Set<Animal> getAnimals() {
         return animals;

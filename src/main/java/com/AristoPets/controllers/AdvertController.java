@@ -35,6 +35,7 @@ public class AdvertController {
         model.addAttribute("phone",user.getPhoneNumber());
         model.addAttribute("breeds",breedsOfUser);
         model.addAttribute("contract",user.isContractOfSale());
+        model.addAttribute("photo", user.getPhoto());
 
         return "advert";
     }

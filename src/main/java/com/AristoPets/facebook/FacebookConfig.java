@@ -28,7 +28,15 @@ public class FacebookConfig {
         return accessToken;
 
     }
+    public  FacebookClient getFacebookClient(String accessToken) {
 
+        String appId = "372236016446842";
+        String appSecret = "4ed6f36178779c9d2c63ca0bb5654f21";
+
+        FacebookClient facebookClient = new DefaultFacebookClient(accessToken, appSecret, Version.VERSION_2_8);
+        return facebookClient;
+
+    }
 
     public User getFaceBookUser(String accessToken) {
         String appId = "372236016446842";
@@ -51,7 +59,7 @@ public class FacebookConfig {
 
         */
 
-        User user = facebookClient.fetchObject("me", User.class, Parameter.with("fields", "id,name,email, first_name, last_name, picture"));
+        User user = facebookClient.fetchObject("me", User.class, Parameter.with("fields", "id,name,email, first_name, last_name, picture.type(large)"));
 
         JsonObject fetchObjectsResults = facebookClient.fetchObject("me", JsonObject.class, Parameter.with("fields", "id,name,email, first_name, last_name"));
 

@@ -44,7 +44,7 @@
 	<section class="main">
 		<div class="sideBar">
 			<div class="sidebar_breeder">
-				<img class="sidebar_breeder_img" src="../img/breeder.jpg" th:src="@{/img/breeder.jpg}" alt="breeder_photo"/>
+				<img class="sidebar_breeder_img" src="../img/breeder.jpg" th:src="${photo}" alt="breeder_photo"/>
 				<h2 class="sidebar_breeder_name" th:text="${name}+' '+${lname}">Dmitry Strahov</h2>
 				<div class="sidebar_icons">
 					<a href="#"><i class="fa fa-facebook  fa-inverse" aria-hidden="true"></i></a>

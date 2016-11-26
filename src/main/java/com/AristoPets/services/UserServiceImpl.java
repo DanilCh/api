@@ -22,4 +22,21 @@ public class UserServiceImpl implements UserService {
     public User getUser(long id){
         return userDao.findOne(id);
     }
+
+    @Override
+    public User save(User user) {
+        return userDao.save(user);
+    }
+
+    @Override
+    public boolean isExists(String authId) {
+        return userDao.isExists(authId);
+    }
+
+    @Override
+    public long findIdByFacebookUserId(String authId) {
+        return userDao.findIdByFacebookUserId(authId);
+    }
+
+
 }

@@ -130,10 +130,11 @@ window.fbAsyncInit = function() {
 	FB.Event.subscribe('auth.login', function(response) {
 		if (response.authResponse) {
 			var test = JSON.stringify(response);
-			post('/main', 'param', test, 'post');
+			post('/user', 'param', test, 'post');
 			//post_to_url("/info", test);
 			console.log(JSON.stringify(response));
 		} else {
+			post('/', 'param', "exit", 'get');
 			console.log('User cancelled login or did not fully authorize.');
 		}
 	});
