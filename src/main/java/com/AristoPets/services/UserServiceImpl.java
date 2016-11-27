@@ -26,19 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User save(User user) {
-        return userDao.saveAndFlush(user);
-    }
-
-    @Override
-    public boolean isExists(String authId) {
-        return userDao.isExists(authId);
-    }
-
-    @Override
-    public long findIdByFacebookUserId(String authId) {
-        return userDao.findIdByFacebookUserId(authId);
-    }
+    public User save(User user) { return userDao.saveAndFlush(user); }
 
     @Override
     public User getUserByAuthId(String authId) {
