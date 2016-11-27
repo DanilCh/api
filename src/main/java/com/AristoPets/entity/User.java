@@ -1,6 +1,7 @@
 package com.AristoPets.entity;
 
 
+import com.AristoPets.entity.enums.AuthType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -28,7 +29,8 @@ public class User  {
     private String nursery;
 
     @Column(name = "AUTH_TYPE")
-    private boolean authType;
+    @Enumerated(EnumType.ORDINAL)
+    private AuthType authType;
 
     @Column(name = "AUTH_ID")
     private String authId;
@@ -51,6 +53,9 @@ public class User  {
     @Column(name = "CONTRACT_OF_SALE")
     private boolean contractOfSale;
 
+    @Column(name = "ARCHIEVED")
+    private boolean archieved;
+
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     @JsonBackReference
@@ -64,7 +69,7 @@ public class User  {
     public User() {
     }
 
-    public User(boolean userType, String firstName, String lastName, String nursery, boolean authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale,  Set<Animal> animals) {
+    public User(boolean userType, String firstName, String lastName, String nursery, AuthType authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale,  Set<Animal> animals) {
         this.userType = userType;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -87,8 +92,6 @@ public class User  {
     public long getId() {
         return id;
     }
-
-
 
     public void setId(long id) {
         this.id = id;
@@ -126,11 +129,11 @@ public class User  {
         this.nursery = nursery;
     }
 
-    public boolean isAuthType() {
-        return authType;
+    public String getAuthType() {
+        return authType.toString();
     }
 
-    public void setAuthType(boolean authType) {
+    public void setAuthType(AuthType authType) {
         this.authType = authType;
     }
 

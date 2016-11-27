@@ -10,4 +10,5 @@ public interface UserService {
     User save(User user);
     boolean isExists(String authId);
     long findIdByFacebookUserId(String authId);
+    User getUserByAuthId(String authId);
 }

@@ -1,7 +1,13 @@
 package com.AristoPets.services;
 
-/**
- * Created by danil on 27.11.16.
- */
-public class CookieService {
+
+import com.AristoPets.entity.User;
+import com.AristoPets.entity.UserCookie;
+
+
+public interface CookieService {
+
+    void setCookie(User user);
+    UserCookie getCookie(long userId);
+    UserCookie getCookie(String UUID);
 }

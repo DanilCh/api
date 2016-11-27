@@ -4,10 +4,12 @@ import com.AristoPets.dao.UserRepository;
 import com.AristoPets.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service("UserService")
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        return userDao.save(user);
+        return userDao.saveAndFlush(user);
     }
 
     @Override
@@ -36,6 +38,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public long findIdByFacebookUserId(String authId) {
         return userDao.findIdByFacebookUserId(authId);
+    }
+
+    @Override
+    public User getUserByAuthId(String authId) {
+        return userDao.findByAuthId(authId);
     }
 
 

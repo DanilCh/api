@@ -22,12 +22,6 @@ public class AnimalController {
     @Autowired
     private AnimalService animalService;
 
-    @Autowired
-    private UserAuthorization userAuthorization;
-
-    @Autowired
-    private UserService userService;
-
 
     @RequestMapping(value = "/animal", method = RequestMethod.GET)
     public String getAnimalPage(@RequestParam("id")long id,Model model){

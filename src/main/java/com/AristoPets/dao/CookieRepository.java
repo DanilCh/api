@@ -1,7 +1,10 @@
 package com.AristoPets.dao;
 
-/**
- * Created by danil on 27.11.16.
- */
-public class CookieRepository {
+
+import com.AristoPets.entity.UserCookie;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CookieRepository extends JpaRepository<UserCookie,Long> {
+    UserCookie findByUserId(long userId);
+    UserCookie findByuuId(String uuId);
 }
