@@ -47,4 +47,5 @@ public class AnimalController {
 
         return "animal";
     }
+
 }

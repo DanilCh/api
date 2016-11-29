@@ -1,12 +1,12 @@
 package com.AristoPets.dao;
 
 import com.AristoPets.entity.Breeds;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 
-public interface BreedsRepository extends CrudRepository<Breeds,Long> {
+public interface BreedsRepository extends JpaRepository<Breeds,Long> {
 
     @Override
     List<Breeds> findAll();

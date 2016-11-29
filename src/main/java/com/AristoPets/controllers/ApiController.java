@@ -1,5 +1,6 @@
 package com.AristoPets.controllers;
 
+import com.AristoPets.dto.AnimalDto;
 import com.AristoPets.entity.Advert;
 import com.AristoPets.entity.Animal;
 import com.AristoPets.entity.Breeds;
@@ -7,7 +8,11 @@ import com.AristoPets.services.AdvertService;
 import com.AristoPets.services.AnimalService;
 import com.AristoPets.services.BreedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.List;
 
 
@@ -23,28 +28,35 @@ public class ApiController {
     @Autowired
     private AdvertService advertService;
 
-    @RequestMapping("/api/breeds")
+    @GetMapping("/api/breeds")
     public List<Breeds> getAllBreeds(){
         return breedService.findAll();
     }
 
-    @RequestMapping("/api/breeds/{id}")
+    @GetMapping("/api/breeds/{id}")
     public Breeds getBreedById(@PathVariable("id") int id){
         return breedService.find(id);
     }
 
 
-    @RequestMapping("/api/animal/all")
-    public Animal getAnimalsData(@RequestParam(value = "id") long id){
+    @GetMapping("/api/adverts/all")
+    public List<Advert> getAllAdverts(){ return advertService.findAll(); }
 
-        Animal animal = animalService.getAnimal(id);
-        return animal   ;
+    @PostMapping("/api/animal/")
+    public ResponseEntity<?> createAnimal(@RequestBody AnimalDto animal){
+        if(animal == null){
+            return ResponseEntity.noContent().build();
+        }
+        //TODO:validation of existing animal
+
+        Animal result = animalService.saveAndFlush(animal);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("animal/{id}").buildAndExpand(result.getId()).toUri();
+        return ResponseEntity.created(location).body(result);
     }
 
-    @RequestMapping("/api/adverts/all")
-    public List<Advert> getAllAdverts(){
+/*    @PutMapping("/api/animal/{id}")
+    public ResponseEntity<Animal> updateAnimal(@PathVariable("id") long id, @RequestBody Animal animal){
 
-        return advertService.findAll();
-
-    }
+        Animal updatingAnimal = animalService.getAnimal(id);
+    }*/
 }

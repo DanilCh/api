@@ -20,6 +20,7 @@ public class Breeds implements Serializable {
     private String name;
 
     @Column(name = "ANIMAL_TYPE")
+    @Enumerated(EnumType.ORDINAL)
     private AnimalType animalType;
 
     public Breeds() {
@@ -46,7 +47,6 @@ public class Breeds implements Serializable {
         this.name = name;
     }
 
-    @Enumerated(EnumType.ORDINAL)
     public AnimalType getAnimalType(){
         return animalType;
     }
