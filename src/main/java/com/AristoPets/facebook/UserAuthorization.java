@@ -3,6 +3,7 @@ package com.AristoPets.facebook;
 import com.AristoPets.entity.User;
 import com.AristoPets.entity.UserCookie;
 import com.AristoPets.entity.enums.AuthType;
+import com.AristoPets.entity.enums.UserType;
 import com.AristoPets.services.CookieService;
 import com.AristoPets.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserAuthorization {
         } else {
             user = new User();
             user.setAuthId(facebookId);
-            user.setUserType(false);
+            user.setUserType(UserType.USER);
             user.setFirstName(faceBookUser.getFirstName());
             user.setLastName(faceBookUser.getLastName());
             user.setAuthType(AuthType.FB);

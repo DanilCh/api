@@ -27,16 +27,7 @@ public class AnimalServiceImpl implements AnimalService {
     @Autowired
     UserRepository userRepository;
 
-    @Override
-    public Animal saveOrUpdate(Animal animal) {
 
-        return animalRepository.save(animal);
-    }
-
-    @Override
-    public void saveOrUpdateAll(List<Animal> animals) {
-        animalRepository.save(animals);
-    }
 
     @Override
     public List<Animal> getAnimalsByUserID(long id) {
@@ -50,6 +41,25 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal saveAndFlush(AnimalDto animalDto) {
+
+        Animal animal = transferFromDtoToEntity(animalDto);
+
+        return animalRepository.saveAndFlush(animal);
+    }
+
+    @Override
+    public Animal update(AnimalDto animalDto) {
+        Animal animal = transferFromDtoToEntity(animalDto);
+        animal.setId(animalDto.getId());
+        return animalRepository.save(animal);
+    }
+
+    @Override
+    public Animal getAnimal(long id) {
+        return animalRepository.findOne(id);
+    }
+
+    private Animal transferFromDtoToEntity(AnimalDto animalDto){
         Animal animal = new Animal();
         animal.setBreed(breedsRepository.getOne(animalDto.getBreedId()));
         animal.setBirthday(animalDto.getBirthday());
@@ -59,15 +69,10 @@ public class AnimalServiceImpl implements AnimalService {
         animal.setName(animalDto.getName());
         animal.setUser(userRepository.getOne(animalDto.getUserId()));
         animal.setNursery(animalDto.getNursery());
+        animal.setMoreInfo(animalDto.getMoreInfo());
+        animal.setCopulationStatus(animalDto.isReadyToCopulation());
+        //TODO:photos
 
-        //TODO:all list of properties(moreinfo,rToCopulation,photos)
-
-        return animalRepository.saveAndFlush(animal);
+        return animal;
     }
-
-    @Override
-    public Animal getAnimal(long id) {
-        return animalRepository.findOne(id);
-    }
-
 }

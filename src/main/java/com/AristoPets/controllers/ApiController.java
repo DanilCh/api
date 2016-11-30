@@ -42,21 +42,5 @@ public class ApiController {
     @GetMapping("/api/adverts/all")
     public List<Advert> getAllAdverts(){ return advertService.findAll(); }
 
-    @PostMapping("/api/animal/")
-    public ResponseEntity<?> createAnimal(@RequestBody AnimalDto animal){
-        if(animal == null){
-            return ResponseEntity.noContent().build();
-        }
-        //TODO:validation of existing animal
 
-        Animal result = animalService.saveAndFlush(animal);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("animal/{id}").buildAndExpand(result.getId()).toUri();
-        return ResponseEntity.created(location).body(result);
-    }
-
-/*    @PutMapping("/api/animal/{id}")
-    public ResponseEntity<Animal> updateAnimal(@PathVariable("id") long id, @RequestBody Animal animal){
-
-        Animal updatingAnimal = animalService.getAnimal(id);
-    }*/
 }

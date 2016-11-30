@@ -2,6 +2,7 @@ package com.AristoPets.entity;
 
 
 import com.AristoPets.entity.enums.AuthType;
+import com.AristoPets.entity.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -17,7 +18,8 @@ public class User  {
     private long id;
 
     @Column(name = "USER_TYPE")
-    private boolean userType;
+    @Enumerated(EnumType.ORDINAL)
+    private UserType userType;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -69,7 +71,7 @@ public class User  {
     public User() {
     }
 
-    public User(boolean userType, String firstName, String lastName, String nursery, AuthType authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale,  Set<Animal> animals) {
+    public User(UserType userType, String firstName, String lastName, String nursery, AuthType authType, String authId, String email, String phoneNumber, String club, String socials, String photo, boolean contractOfSale,  Set<Animal> animals) {
         this.userType = userType;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -97,11 +99,11 @@ public class User  {
         this.id = id;
     }
 
-    public boolean isUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(boolean userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 

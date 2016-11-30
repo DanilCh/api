@@ -4,6 +4,7 @@ package com.AristoPets.dto;
 import java.io.Serializable;
 
 public class AnimalDto implements Serializable {
+    private long id;
     private String name;
     private String gender;
     private String color;
@@ -13,8 +14,18 @@ public class AnimalDto implements Serializable {
     private String moreInfo;
     private long breedId;
     private long userId;
+    private boolean readyToCopulation;
     private String[] titles;
     private String[] photos;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -102,5 +113,13 @@ public class AnimalDto implements Serializable {
 
     public void setPhotos(String[] photos) {
         this.photos = photos;
+    }
+
+    public boolean isReadyToCopulation() {
+        return readyToCopulation;
+    }
+
+    public void setReadyToCopulation(boolean readyToCopulation) {
+        this.readyToCopulation = readyToCopulation;
     }
 }

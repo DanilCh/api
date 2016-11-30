@@ -55,13 +55,13 @@ public class Animal {
         private String photo;
 
         @Column(name = "READY_TO_COPULATION",nullable = false)
-        private int readyToCopulation;
+        private boolean readyToCopulation;
 
         @OneToMany(mappedBy = "animalTitles",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
         @JsonBackReference
         private Set<Titles> titles;
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "USER_ID",nullable = false)
         @JsonManagedReference
         private User user;
@@ -79,7 +79,7 @@ public class Animal {
 
         public Animal(String name, Gender gender, String color, Date birthday,
                       String club, String moreInfo, Breeds breed, User user, String photo,
-                      short readyToCopulation) {
+                      boolean readyToCopulation) {
             this.name = name;
             this.gender = gender;
             this.color = color;
@@ -92,7 +92,8 @@ public class Animal {
             this.readyToCopulation = readyToCopulation;
         }
 
-        public boolean isReadyToCopulation(){ return readyToCopulation!=0; }
+        public boolean isReadyToCopulation(){ return readyToCopulation; }
+        public void setCopulationStatus(boolean isReady){ readyToCopulation = isReady;}
 
         public String getName() {
             return name;
